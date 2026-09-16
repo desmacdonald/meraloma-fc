@@ -158,5 +158,37 @@
   </div>
   <p class="note">More Meraloma FC women's teams will appear here as rosters are confirmed.</p>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+const UNITED_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCBVfNkJveKoZE0-CB3ew5bfokudLYUtvYuE6a_s9p1WoEHA5Bri4tQJKmT6VnT80Kjqi1iCOCfU7C/pub?gid=0&single=true&output=csv";
+
+function computeRecord(rows) {
+  let w = 0, d = 0, l = 0;
+  rows.forEach(row => {
+    const homeScore = (row.home_score || "").trim();
+    const awayScore = (row.away_score || "").trim();
+    if (homeScore === "" || awayScore === "") return;
+    const usScore = row.us === 'home' ? homeScore : awayScore;
+    const themScore = row.us === 'home' ? awayScore : homeScore;
+    if (Number(usScore) > Number(themScore)) w++;
+    else if (Number(usScore) < Number(themScore)) l++;
+    else d++;
+  });
+  return w + "-" + d + "-" + l;
+}
+
+Papa.parse(UNITED_CSV_URL, {
+  download: true,
+  header: true,
+  skipEmptyLines: true,
+  complete: (results) => {
+    document.getElementById('record-United').textContent = computeRecord(results.data);
+  },
+  error: (err) => {
+    console.error('Meralomas United schedule fetch failed:', err);
+  }
+});
+</script>
 </body>
 </html>
