@@ -140,6 +140,50 @@
     margin-top:2.4rem;
     letter-spacing:0.02em;
   }
+  .club-card{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:16px;
+    background:var(--pitch-dark);
+    color:var(--chalk);
+    border-radius:4px;
+    border-top:3px solid var(--brand-orange);
+    padding:1.3rem 1.4rem;
+    text-decoration:none;
+    transition:box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .club-card:hover, .club-card:focus{
+    box-shadow:0 4px 14px rgba(19,42,34,0.3);
+    transform:translateY(-2px);
+  }
+  .club-card img{
+    width:56px;
+    height:56px;
+    flex:none;
+  }
+  .club-card .kicker{
+    font-family:'Oswald', sans-serif;
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#B9C9BE;
+    margin-bottom:4px;
+  }
+  .club-card h2{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    margin:0 0 4px;
+    color:var(--chalk);
+  }
+  .club-card p{
+    margin:0;
+    font-size:14px;
+    color:#CBD8CF;
+  }
+  .club-card .go{color:var(--brand-orange);font-weight:600;}
 </style>
 </head>
 <body>
@@ -164,6 +208,14 @@
       <p>Selects A &middot; Selects B &middot; Masters 2</p>
     </a>
   </div>
+  <a class="club-card" href="https://www.meraloma.com/soccer">
+    <img src="/favicon-192.png" alt="" width="56" height="56">
+    <div>
+      <div class="kicker">Part of the Meraloma Club</div>
+      <h2>Meraloma Soccer</h2>
+      <p>Club news, how to join, and the rest of the Meraloma family <span class="go">at meraloma.com &rarr;</span></p>
+    </div>
+  </a>
   <p class="note">Meraloma Football Club &middot; Vancouver, BC</p>
 </div>
 </body>
